@@ -60,7 +60,7 @@ def preprocessing():
 
             utterances_spec = np.array(utterances_spec)
             print(utterances_spec.shape)
-            np.save(os.path.join(param.data.train_path if training else param.test_path, "speaker%d.npy" % i),
+            np.save(os.path.join(param.data.train_path if training else param.data.test_path, "speaker%d.npy" % i),
                     utterances_spec)
 
     # preprocess and save train data
