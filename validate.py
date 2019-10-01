@@ -27,7 +27,9 @@ if __name__ == "__main__":
         batch_avg_EER = 0
         for batch_id, mel_db_batch in enumerate(test_loader):
             assert param.test.M % 2 == 0
-            enrollment_batch, verification_batch = torch.split(mel_db_batch, int(mel_db_batch.size(1) / 2), dim=1).to(device)
+            enrollment_batch, verification_batch = torch.split(mel_db_batch, int(mel_db_batch.size(1) / 2), dim=1)
+            enrollment_batch = enrollment_batch.to(device)
+            verification_batch = verification_batch.to(device)
 
             enrollment_batch = torch.reshape(enrollment_batch, (
                 param.test.N * param.test.M // 2, enrollment_batch.size(2), enrollment_batch.size(3)))
