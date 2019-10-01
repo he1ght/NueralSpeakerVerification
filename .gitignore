@@ -1,3 +1,15 @@
+# repo-specific stuff
+pred.txt
+multi-bleu.perl
+*.pt
+\#*#
+.idea
+*.sublime-*
+.DS_Store
+data/
+zeroth_korean/
+speech_id_checkpoint
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -23,7 +35,6 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -45,7 +56,6 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
-.pytest_cache/
 
 # Translations
 *.mo
@@ -54,7 +64,6 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
 
 # Flask stuff:
 instance/
@@ -87,8 +96,6 @@ celerybeat-schedule
 env/
 venv/
 ENV/
-env.bak/
-venv.bak/
 
 # Spyder project settings
 .spyderproject
@@ -102,3 +109,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# Tensorboard
+runs/
+
+# Trained model
+*.model
+Stats
+
+# Preprocessed data
+*.npy
