@@ -6,11 +6,11 @@ import torch.nn.functional as F
 def get_centroids(emb):
     cents = []
     for speaker in emb:
-        cents = 0
+        cent = 0
         for utterance in speaker:
-            cents = cents + utterance
-        cents = cents / len(speaker)
-        cents.append(cents)
+            cent = cent + utterance
+        cent = cent / len(speaker)
+        cents.append(cent)
     cents = torch.stack(cents)
     return cents
 
