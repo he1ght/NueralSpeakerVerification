@@ -9,8 +9,8 @@ from configuration import param
 # Motivate from "https://github.com/Janghyun1230/Speaker_Verification/blob/master/data_preprocess.py"
 
 # downloaded dataset path
-train_path = glob.glob(os.path.dirname(param.train_path_unprocessed))
-test_path = glob.glob(os.path.dirname(param.test_path_unprocessed))
+train_path = glob.glob(os.path.dirname(param.data.train_path_unprocessed))
+test_path = glob.glob(os.path.dirname(param.data.test_path_unprocessed))
 
 
 def preprocessing():
@@ -33,11 +33,9 @@ def preprocessing():
 
     def save_tisv(training=True):
         path = train_path if training else test_path
+        name_tag = "[Train]" if training else "[Test] "
         for i, folder in enumerate(path):
-            if training:
-                print("[Train] %dth speaker processing..." % i)
-            else:
-                print("[Test]  %dth speaker processing..." % i)
+            print("%s %dth speaker processing..." % (name_tag, i))
             utterances_spec = []
             for utter_name in os.listdir(folder):
                 if utter_name[-4:].lower() == '.wav' or utter_name[-5:].lower() == '.flac':
