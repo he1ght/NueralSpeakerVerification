@@ -1,6 +1,6 @@
-import os
 import random
-import time
+import random
+
 import torch
 from torch.utils.data import DataLoader
 
@@ -8,8 +8,6 @@ from configuration import param
 from load_data import ZerothKoreanDataset, ZerothKoreanDatasetPreprocessed
 from model import SpeechEmbedder
 from utils import get_centroids, get_cossim
-from loss import GE2ELoss
-
 
 if __name__ == "__main__":
     device = torch.device(param.device)

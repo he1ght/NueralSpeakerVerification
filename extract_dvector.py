@@ -1,12 +1,13 @@
 import glob
+import os
+
 import librosa
 import numpy as np
-import os
 import torch
+from model import SpeechEmbedder
 
-from configuration import param
-from speech_embedder_net import SpeechEmbedder
 from VAD import VAD_chunk
+from configuration import param
 
 
 def concat_segs(times, segs):

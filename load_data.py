@@ -1,10 +1,10 @@
 import glob
-
-import librosa
-import numpy as np
 import os
 import random
 from random import shuffle
+
+import librosa
+import numpy as np
 import torch
 from torch.utils.data import Dataset
 

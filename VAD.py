@@ -5,11 +5,10 @@ Using open source: https://github.com/wiseman/py-webrtcvad
 
 import collections
 import contextlib
-import numpy as np
-import sys
-import librosa
 import wave
 
+import librosa
+import numpy as np
 import webrtcvad
 
 from configuration import param

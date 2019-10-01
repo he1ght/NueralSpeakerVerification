@@ -1,7 +1,9 @@
 import glob
 import os
+
 import librosa
 import numpy as np
+
 from configuration import param
 
 # Motivate from "https://github.com/Janghyun1230/Speaker_Verification/blob/master/data_preprocess.py"
