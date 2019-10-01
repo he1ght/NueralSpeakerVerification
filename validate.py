@@ -19,7 +19,7 @@ if __name__ == "__main__":
                              drop_last=True)
 
     embedder_net = SpeechEmbedder().to(device)
-    embedder_net.load_state_dict(torch.load(param.model_path))
+    embedder_net.load_state_dict(torch.load(param.test.model_path))
     embedder_net.eval()
 
     avg_EER = 0
