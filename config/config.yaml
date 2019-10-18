@@ -1,4 +1,4 @@
-device: "cuda"
+cuda: !!bool "true"
 unprocessed_data: './zeroth_korean/*/*/*/*.flac'
 ---
 data:
@@ -8,33 +8,33 @@ data:
     test_path_unprocessed: './zeroth_korean/test_data_01/*/*/*.flac'
     data_preprocessed: !!bool "true" 
     sr: 16000
-    nfft: 512 #For mel spectrogram preprocess
-    window: 0.025 #(s)
-    hop: 0.01 #(s)
-    nmels: 40 #Number of mel energies
-    tisv_frame: 180 #Max number of time steps in input after preprocess
+    nfft: 512 # For mel spectrogram preprocess
+    window: 0.025 # (s)
+    hop: 0.01 # (s)
+    nmels: 40 # Number of mel energies
+    tisv_frame: 180 # Max number of time steps in input after preprocess
 ---   
 model:
-    hidden: 500 #Number of LSTM hidden layer units
-    num_layer: 4 #Number of LSTM layers
-    proj: 256 #Embedding size
+    hidden: 500 # Number of LSTM hidden layer units
+    num_layer: 4 # Number of LSTM layers
+    proj: 256 # Embedding size
 ---
 train:
-    N : 4 #Number of speakers in batch
-    M : 5 #Number of utterances per speaker
-    num_workers: 0 #number of workers for dataloader
+    batch : 4 # Number of speakers in batch
+    utters : 5 # Number of utterances per speaker
+    num_workers: 0 # Number of workers for dataloader
     lr: 0.01 
-    epochs: 100 # 950 #Max training speaker epoch
-    log_interval: 10 #Epochs before printing progress
+    epochs: 100 # 950 # Max training speaker epoch
+    log_interval: 10 # Epochs before printing progress
     log_file: './speech_id_checkpoint/Stats'
-    checkpoint_interval: 120 #Save model after x speaker epochs
+    checkpoint_interval: 120 # Save model after x speaker epochs
     checkpoint_dir: './speech_id_checkpoint'
     checkpoint_name: 'demo'
-    restore: !!bool "false" #Resume training from previous model path
+    restore: !!bool "false" # Resume training from previous model path
 ---
 test:
-    N : 4 #Number of speakers in batch
-    M : 6 #Number of utterances per speaker
-    num_workers: 8 #number of workers for data laoder
-    epochs: 10 #testing speaker epochs
-    model_path: './speech_id_checkpoint/final_epoch_100_batch_id_26.model' #Model path for testing, inference, or resuming training
+    batch : 10 # Number of speakers in batch
+    utters : 6 # Number of utterances per speaker
+    num_workers: 8 # Number of workers for data laoder
+    epochs: 2 # Testing speaker epochs
+    model_path: './speech_id_checkpoint/final_epoch_100_batch_id_26.model' # Model path for testing, inference, or resuming training

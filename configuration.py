@@ -1,3 +1,8 @@
+__author__ = "Hee-Seung Jung"
+__maintainer__ = "Hee-Seung Jung"
+__email__ = "heesng.jung@gmail.com"
+__status__ = "Production"
+
 import yaml
 
 
@@ -16,7 +21,7 @@ class DictToDot(dict):
 
 
 def load_config(filename):
-    docs = yaml.load_all(open(filename, 'r'))
+    docs = yaml.load_all(open(filename, 'r'), Loader=yaml.FullLoader)
     ret_dict = dict()
     for doc in docs:
         for k, v in doc.items():

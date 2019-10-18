@@ -1,3 +1,8 @@
+__author__ = "Hee-Seung Jung"
+__maintainer__ = "Hee-Seung Jung"
+__email__ = "heesng.jung@gmail.com"
+__status__ = "Production"
+
 import glob
 import os
 import random
@@ -42,13 +47,14 @@ def mfccs_and_spec(wav_file, wav_process=False, calc_mfccs=False, calc_mag_db=Fa
 
 class ZerothKoreanDataset(Dataset):
     def __init__(self, training=False):
+        raise NotImplementedError
 
         if training:
             self.path = param.data.train_path_unprocessed
-            self.utter_num = param.train.M
+            self.utter_num = param.train.utters
         else:
             self.path = param.data.test_path_unprocessed
-            self.utter_num = param.test.M
+            self.utter_num = param.test.utters
 
         self.speakers = glob.glob(os.path.dirname(self.path))
         shuffle(self.speakers)
@@ -77,13 +83,16 @@ class ZerothKoreanDatasetPreprocessed(Dataset):
         # data path
         if training:
             self.path = param.data.train_path
-            self.utter_num = param.train.M
+            self.utter_num = param.train.utters
         else:
             self.path = param.data.test_path
-            self.utter_num = param.test.M
+            self.utter_num = param.test.utters
         self.file_list = os.listdir(self.path)
         self.shuffle = shuffle
         self.utter_start = utter_start
+        if shuffle:
+            random_len = len(os.listdir(self.path))
+            self.random_idx = random.sample(range(random_len), random_len)
 
     def __len__(self):
         return len(self.file_list)
@@ -93,7 +102,8 @@ class ZerothKoreanDatasetPreprocessed(Dataset):
         np_file_list = os.listdir(self.path)
 
         if self.shuffle:
-            selected_file = random.sample(np_file_list, 1)[0]  # select random speaker
+            # selected_file = random.sample(np_file_list, 1)[0]  # select random speaker
+            selected_file = np_file_list[self.random_idx[idx]]
         else:
             selected_file = np_file_list[idx]
 

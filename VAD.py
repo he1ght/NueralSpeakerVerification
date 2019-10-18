@@ -1,3 +1,8 @@
+__author__ = "Hee-Seung Jung"
+__maintainer__ = "Hee-Seung Jung"
+__email__ = "heesng.jung@gmail.com"
+__status__ = "Production"
+
 """
 Voice Activity Detector (VAD)
 Using open source: https://github.com/wiseman/py-webrtcvad

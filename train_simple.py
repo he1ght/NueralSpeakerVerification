@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     # save model
     embedder_net.eval().cpu()
-    save_model_filename = "final_epoch_" + str(e + 1) + "_batch_id_" + str(batch_id + 1) + ".model"
+    save_model_filename = "final_epoch_" + str(e + 1) + "_batch_id_" + str(batch_id + 1) + "_simple.model"
     save_model_path = os.path.join(param.train.checkpoint_dir, save_model_filename)
     torch.save(embedder_net.state_dict(), save_model_path)
 
